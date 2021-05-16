@@ -14,6 +14,11 @@
     </tr>
   </thead>
 
+  <% @a_new_movie = Movie.new %>
+  <tr>
+    <%= render 'horizontal_form', movie: @a_new_movie %>
+  </tr>
+  
   <tbody>
     <% @movies.each do |movie| %>
       <tr>
