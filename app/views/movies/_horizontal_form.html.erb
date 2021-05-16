@@ -22,8 +22,8 @@
   </th>
 
   <th class="field">
-    <%= form.label :director_id %>
-    <%= form.text_field :director_id %>
+    <%= form.label :movie %>
+    <%= form.select :movie, Movie.all.pluck(:title) %>
   </th>
 
   <th class="field">
