@@ -25,7 +25,7 @@
   <tbody>
     <% @movies.order(title: :asc).each do |movie| %>
       <tr>
-        <td><%= link_to( movie.title, edit_movie_path(movie.id), id: "movie_" + movie.id.to_s + "_title" , remote: true)  %> </td>
+        <td><%= link_to( movie.title, title_edit_path(movie.id), id: "movie_" + movie.id.to_s + "_title" , remote: true)  %> </td>
         <td><%= movie.year %></td>
         <td><%= movie.director.name %></td>
         <td> Show description </td>

@@ -23,6 +23,14 @@ class MoviesController < ApplicationController
     end
   end
 
+  # GET /movies/1/title/edit
+  def title_edit
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
   # POST /movies or /movies.json
   def create
     @movie = Movie.new(movie_params)
