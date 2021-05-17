@@ -11,10 +11,8 @@
     </div>
   <% end %>
 
-  <th class="field" id= "<%= "movie_" + movie.id.to_s + "_title"%>" >
+  <div class="field" id= "<%= "movie_" + movie.id.to_s + "_title"%>" >
     <%= form.label :title %>
-    <%= form.text_field :title, style: 'float: left' %>
-  </th>
-
-
+    <%= form.text_field :title %>
+  </div>
 <% end %>

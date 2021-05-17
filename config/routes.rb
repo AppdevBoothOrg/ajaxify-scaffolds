@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   resources :movies
 
   get "movies/:id/title/edit" => "movies#title_edit", as: :title_edit
+  put "movies/:id/title" => "movies#title_update", as: :title_update
 end
