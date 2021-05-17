@@ -1,1 +1,1 @@
-$(alert("hi"));
+$("#<%= dom_id(@movie)%>_duration").replaceWith(" <%= j(render("movies/duration_form", movie: @movie)) %>");
