@@ -14,4 +14,7 @@ Rails.application.routes.draw do
 
   get "movies/:id/director/edit" => "movies#director_edit", as: :director_edit
   patch "movies/:id/director" => "movies#director_update", as: :director_update
+
+  get "movies/:id/description/edit" => "movies#description_edit", as: :description_edit
+  patch "movies/:id/description" => "movies#description_update", as: :description_update
 end
