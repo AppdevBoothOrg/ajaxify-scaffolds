@@ -35,7 +35,11 @@
             <%= link_to( movie.year, year_edit_path(movie.id) , remote: true) %>
           </div>
         </td>
-        <td><%= movie.director.name %></td>
+        <td>
+          <div id= "<%= "movie_" + movie.id.to_s + "_director" %>" > 
+            <%= link_to( movie.director.name, director_edit_path(movie.id) , remote: true) %>
+          </div>
+        </td>
         <td> Show description </td>
         <td><%= link_to( movie.duration.to_s + " minutes", edit_movie_path(movie.id), id: "movie_" + movie.id.to_s + "_duration" , remote: true)  %> </td>
         <td><%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
