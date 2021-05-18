@@ -25,12 +25,15 @@
   <tbody>
     <% @movies.order(title: :asc).each do |movie| %>
       <tr>
-        <td><%= link_to( movie.title, title_edit_path(movie.id), id: "movie_" + movie.id.to_s + "_title" , remote: true)  %> </td>
+        <td>
+          <div id= "<%= "movie_" + movie.id.to_s + "_title" %>" > 
+            <%= link_to( movie.title, title_edit_path(movie.id) , remote: true) %>
+          </div>
+        </td>
         <td><%= movie.year %></td>
         <td><%= movie.director.name %></td>
         <td> Show description </td>
         <td><%= link_to( movie.duration.to_s + " minutes", edit_movie_path(movie.id), id: "movie_" + movie.id.to_s + "_duration" , remote: true)  %> </td>
-      
         <td><%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

@@ -1,4 +1,4 @@
-<%= form_with(model: movie, url: title_update_path(movie.id) , local: false) do |form| %>
+<%= form_with(model: movie, id: "movie_" + movie.id.to_s + "_title", url: title_update_path(movie.id) , local: false) do |form| %>
   <% if movie.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-  <div class="field" id= "<%= "movie_" + movie.id.to_s + "_title" %>" >
+  <div class="field" >
     <%= form.label :title %>
     <%= form.text_field :title %>
   </div>

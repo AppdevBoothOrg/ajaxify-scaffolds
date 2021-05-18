@@ -1,2 +1,2 @@
-$("#<%= dom_id(@movie)%>_title").replaceWith("<td> <%= j(link_to( @movie.title, title_edit_path(@movie.id), id: "movie_" + @movie.id.to_s + "_title" , remote: true)) %> </td>")
+$("#<%= dom_id(@movie)%>_title").replaceWith(" <%= j(render("movies/title_update_replacement_form", movie: @movie)) %>")
 
