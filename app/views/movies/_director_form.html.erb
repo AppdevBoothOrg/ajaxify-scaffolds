@@ -1,0 +1,19 @@
+<%= form_with(model: movie, id: "movie_" + movie.id.to_s + "_director", url: director_update_path(movie.id) , local: false) do |form| %>
+  <% if movie.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
+
+      <ul>
+        <% movie.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field" >
+    <%= form.label :director %>
+    <%= form.select :director, Director.all.pluck(:name).sort %>
+  </div>
+
+<% end %>
