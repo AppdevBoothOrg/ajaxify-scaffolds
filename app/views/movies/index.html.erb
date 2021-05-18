@@ -30,7 +30,11 @@
             <%= link_to( movie.title, title_edit_path(movie.id) , remote: true) %>
           </div>
         </td>
-        <td><%= movie.year %></td>
+        <td>
+          <div id= "<%= "movie_" + movie.id.to_s + "_year" %>" > 
+            <%= link_to( movie.year, year_edit_path(movie.id) , remote: true) %>
+          </div>
+        </td>
         <td><%= movie.director.name %></td>
         <td> Show description </td>
         <td><%= link_to( movie.duration.to_s + " minutes", edit_movie_path(movie.id), id: "movie_" + movie.id.to_s + "_duration" , remote: true)  %> </td>
