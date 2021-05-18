@@ -13,7 +13,7 @@
 
   <div class="field" >
     <%= form.label :director %>
-    <%= form.select :director, Director.all.pluck(:name).sort %>
+    <%= form.collection_select :director_id, Director.order(:name), :id, :name, {}, onchange: 'Rails.fire(this.form, "submit")' %>
   </div>
 
 <% end %>
