@@ -1,1 +1,3 @@
-console.log("howdy");
+$("#<%= "movie_" + Movie.all.order(:title).first.id.to_s %>").before("<%= j(render("movies/new_movie_form", movie: @movie)) %>");
+
+

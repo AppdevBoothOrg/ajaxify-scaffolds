@@ -56,6 +56,7 @@ class MoviesController < ApplicationController
   def create    
     the_director_id = Director.all.where({ :name => params[:movie][:director_id] }).first.id
     params[:movie][:director_id] = the_director_id
+    
     @movie = Movie.new(movie_params)
 
     respond_to do |format|
