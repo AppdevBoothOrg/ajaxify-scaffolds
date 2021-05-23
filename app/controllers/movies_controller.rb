@@ -53,13 +53,16 @@ class MoviesController < ApplicationController
   end
 
   # POST /movies or /movies.json
-  def create
+  def create    
+    the_director_id = Director.all.where({ :name => params[:movie][:director_id] }).first.id
+    params[:movie][:director_id] = the_director_id
     @movie = Movie.new(movie_params)
 
     respond_to do |format|
       if @movie.save
         format.html { redirect_to @movie, notice: "Movie was successfully created." }
         format.json { render :show, status: :created, location: @movie }
+        format.js
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @movie.errors, status: :unprocessable_entity }
