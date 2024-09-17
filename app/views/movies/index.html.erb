@@ -1,35 +1,62 @@
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
 <p id="notice"><%= notice %></p>
 
 <h1>Movies</h1>
 
-<table>
+<table width="100%">
   <thead>
     <tr>
       <th>Title</th>
-      <th>Description</th>
-      <th>Duration</th>
       <th>Year</th>
       <th>Director</th>
+      <th>Description</th>
+      <th>Duration</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
+  <% @a_new_movie = Movie.new %>
+  <tr>
+    <%= render 'horizontal_form', movie: @a_new_movie %>
+  </tr>
+  
   <tbody>
-    <% @movies.each do |movie| %>
-      <tr>
-        <td><%= movie.title %></td>
-        <td><%= movie.description %></td>
-        <td><%= movie.duration %></td>
-        <td><%= movie.year %></td>
-        <td><%= movie.director_id %></td>
-        <td><%= link_to 'Show', movie %></td>
-        <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
-        <td><%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% @movies.order(title: :asc).each do |movie| %>
+      <tr id= "<%= "movie_" + movie.id.to_s %>">
+        <td>
+          <div id= "<%= "movie_" + movie.id.to_s + "_title" %>" > 
+            <%= link_to( movie.title, title_edit_path(movie.id) , remote: true) %>
+          </div>
+        </td>
+        <td>
+          <div id= "<%= "movie_" + movie.id.to_s + "_year" %>" > 
+            <%= link_to( movie.year, year_edit_path(movie.id) , remote: true) %>
+          </div>
+        </td>
+        <td>
+          <div id= "<%= "movie_" + movie.id.to_s + "_director" %>" > 
+            <%= link_to( movie.director.name, director_edit_path(movie.id) , remote: true) %>
+          </div>
+        </td>
+        
+        <td>
+          <div id= "<%= "movie_" + movie.id.to_s + "_description" %>">
+            <details>
+              <summary>Show description</summary>
+              <p><%= movie.description %></p>
+              <p> <%= link_to( "Edit", description_edit_path(movie.id) , remote: true) %>  </p>
+            </details>
+          </div>
+        </td>
+        
+        <td><%= link_to( movie.duration.to_s + " minutes", edit_movie_path(movie.id), id: "movie_" + movie.id.to_s + "_duration" , remote: true)  %> </td>
+
+        <td><%= link_to 'Destroy', movie, method: :delete, remote: true %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Movie', new_movie_path %>

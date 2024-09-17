@@ -1,0 +1,1 @@
+$("#<%= dom_id(@movie)%>_duration").replaceWith("<%= j(link_to( @movie.duration.to_s + " minutes", edit_movie_path(@movie.id), id: "movie_" + @movie.id.to_s + "_duration" , remote: true))  %>")

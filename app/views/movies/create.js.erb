@@ -1,0 +1,9 @@
+$("#<%= "movie_" + Movie.all.order(:title).first.id.to_s %>").before("Hey_<%= j(render("movies/new_movie_form", movie: @movie)) %>");
+
+$("#<%= "input_field" %> #movie_title").val("");
+$("#<%= "input_field" %> #movie_year").val("");
+$("#<%= "input_field" %> #movie_description").val("");
+$("#<%= "input_field" %> #movie_director_id").val("");
+$("#<%= "input_field" %> #movie_duration").val("");
+
+
